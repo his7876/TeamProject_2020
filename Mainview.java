@@ -22,7 +22,7 @@ public class Mainview {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String url="jdbc:mysql://localhost/practice?characterEncoding=UTF-8&serverTimezone=UTC";
-			conn=DriverManager.getConnection(url,"root","purejang98");
+			conn=DriverManager.getConnection(url,"root","password");
 			stmt=conn.createStatement();
 			String sql="SELECT no,ID,PW FROM attendance";
 			rs=stmt.executeQuery(sql);
@@ -32,12 +32,12 @@ public class Mainview {
 				PW.add(rs.getString(3));
 				System.out.println(Num);
 			}
-			index=ID.indexOf("id3"); //¾ó±¼ÀÎ½Ä
+			index=ID.indexOf("id3"); //ì–¼êµ´ì¸ì‹
 			num=Num.get(index);
 			id=ID.get(index);
 			pw=PW.get(index);
 			
-			System.out.println("1.·Î±×ÀÎ 2.È¸¿ø°¡ÀÔ");
+			System.out.println("1.ë¡œê·¸ì¸ 2.íšŒì›ê°€ì…");
 			int select=sc.nextInt();
 			if(select==1) {
 				Login();
@@ -47,11 +47,11 @@ public class Mainview {
 			
 		}
 		catch(ClassNotFoundException e) {
-			System.out.println("µå¶óÀÌ¹ö ·Îµù ½ÇÆĞ");
+			System.out.println("ë“œë¼ì´ë²„ ë¡œë”© ì‹¤íŒ¨");
 		}catch(SQLException e) {
-			System.out.println("¿¡·¯: "+e);
+			System.out.println("ì—ëŸ¬: "+e);
 		}
-		System.out.println("1.Ãâ±Ù 2.Åğ±Ù 3.°ü¸®");
+		System.out.println("1.ì¶œê·¼ 2.í‡´ê·¼ 3.ê´€ë¦¬");
 		int select=sc.nextInt();
 		
 		switch(select) {
@@ -70,7 +70,7 @@ public class Mainview {
 		int hour = cal.get(Calendar.HOUR_OF_DAY);
 		int min = cal.get(Calendar.MINUTE);
 		int[] start= {hour,min};
-		System.out.println(hour + "½Ã " + min + "ºĞ Ãâ±ÙÇÏ¿´½À´Ï´Ù.");
+		System.out.println(hour + "ì‹œ " + min + "ë¶„ ì¶œê·¼í•˜ì˜€ìŠµë‹ˆë‹¤.");
 	
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -85,15 +85,15 @@ public class Mainview {
 
 			int count=pstmt.executeUpdate();
 			if(count==0) {
-				System.out.println("µ¥ÀÌÅÍ ÀÔ·Â ½ÇÆĞ");
+				System.out.println("ë°ì´í„° ì…ë ¥ ì‹¤íŒ¨");
 			}else {
-				System.out.println("µ¥ÀÌÅÍ ÀÔ·Â ¼º°ø");
+				System.out.println("ë°ì´í„° ì…ë ¥ ì„±ê³µ");
 			}
 		}
 		catch(ClassNotFoundException e) {
-			System.out.println("µå¶óÀÌ¹ö ·Îµù ½ÇÆĞ");
+			System.out.println("ë“œë¼ì´ë²„ ë¡œë”© ì‹¤íŒ¨");
 		}catch(SQLException e) {
-			System.out.println("¿¡·¯: "+e);
+			System.out.println("ì—ëŸ¬: "+e);
 		}
 	
 	
@@ -105,7 +105,7 @@ public class Mainview {
 		int hour = cal.get(Calendar.HOUR_OF_DAY);
 		int min = cal.get(Calendar.MINUTE);
 		int[] start= {hour,min};
-		System.out.println(hour + "½Ã " + min + "ºĞ Åğ±ÙÇÏ¿´½À´Ï´Ù.");
+		System.out.println(hour + "ì‹œ " + min + "ë¶„ í‡´ê·¼í•˜ì˜€ìŠµë‹ˆë‹¤.");
 	
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -120,37 +120,37 @@ public class Mainview {
 
 			int count=pstmt.executeUpdate();
 			if(count==0) {
-				System.out.println("µ¥ÀÌÅÍ ÀÔ·Â ½ÇÆĞ");
+				System.out.println("ë°ì´í„° ì…ë ¥ ì‹¤íŒ¨");
 			}else {
-				System.out.println("µ¥ÀÌÅÍ ÀÔ·Â ¼º°ø");
+				System.out.println("ë°ì´í„° ì…ë ¥ ì„±ê³µ");
 			}
 		}
 		catch(ClassNotFoundException e) {
-			System.out.println("µå¶óÀÌ¹ö ·Îµù ½ÇÆĞ");
+			System.out.println("ë“œë¼ì´ë²„ ë¡œë”© ì‹¤íŒ¨");
 		}catch(SQLException e) {
-			System.out.println("¿¡·¯: "+e);
+			System.out.println("ì—ëŸ¬: "+e);
 		}
 	}
 	public static void RunManage() {
-		System.out.println("IDÀÔ·Â :");
+		System.out.println("IDì…ë ¥ :");
 		String newID=sc.next();
 		
-		System.out.println("PWÀÔ·Â :");
+		System.out.println("PWì…ë ¥ :");
 		String newPW=sc.next();
 		if(!(newID.equals("admin") && newPW.equals("admin"))) {
-			System.out.println("·Î±×ÀÎ½ÇÆĞ");
+			System.out.println("ë¡œê·¸ì¸ì‹¤íŒ¨");
 			System.exit(0);
 			}
 		
-		System.out.println("1.»ç¿ø»èÁ¦ 2.»ç¿øÃß°¡");
+		System.out.println("1.ì‚¬ì›ì‚­ì œ 2.ì‚¬ì›ì¶”ê°€");
 		int select=sc.nextInt();
 		switch(select) {
 		case 1:
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				String url="jdbc:mysql://localhost/practice?characterEncoding=UTF-8&serverTimezone=UTC";
-				conn=DriverManager.getConnection(url,"root","purejang98");
-				System.out.println("»èÁ¦ÇÒ »ç¿ø ¼±ÅÃ");
+				conn=DriverManager.getConnection(url,"root","password");
+				System.out.println("ì‚­ì œí•  ì‚¬ì› ì„ íƒ");
 				select=sc.nextInt();
 				String sql="DELETE "
 						+ "FROM attendance WHERE no=?";
@@ -161,15 +161,15 @@ public class Mainview {
 				
 				int count=pstmt.executeUpdate();
 				if(count==0) {
-					System.out.println("µ¥ÀÌÅÍ ÀÔ·Â ½ÇÆĞ");
+					System.out.println("ë°ì´í„° ì…ë ¥ ì‹¤íŒ¨");
 				}else {
-					System.out.println("µ¥ÀÌÅÍ ÀÔ·Â ¼º°ø");
+					System.out.println("ë°ì´í„° ì…ë ¥ ì„±ê³µ");
 				}
 			}
 			catch(ClassNotFoundException e) {
-				System.out.println("µå¶óÀÌ¹ö ·Îµù ½ÇÆĞ");
+				System.out.println("ë“œë¼ì´ë²„ ë¡œë”© ì‹¤íŒ¨");
 			}catch(SQLException e) {
-				System.out.println("¿¡·¯: "+e);
+				System.out.println("ì—ëŸ¬: "+e);
 			}
 			
 			break;
@@ -177,16 +177,16 @@ public class Mainview {
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				String url="jdbc:mysql://localhost/practice?characterEncoding=UTF-8&serverTimezone=UTC";
-				conn=DriverManager.getConnection(url,"root","purejang98");
-				System.out.println("IDÀÔ·Â :");
+				conn=DriverManager.getConnection(url,"root","password");
+				System.out.println("IDì…ë ¥ :");
 				newID=sc.next();
 				
-				System.out.println("PWÀÔ·Â :");
+				System.out.println("PWì…ë ¥ :");
 				newPW=sc.next();
 				String sql="INSERT INTO attendance VALUES(?,?,?,?,?,?,?)";
 						
 				pstmt=conn.prepareStatement(sql);
-				pstmt.setInt(1,Num.get(Num.size()-1)+1); //ºñ¾îÀÖ´Â °÷ or ¸¶Áö¸· ´ÙÀ½
+				pstmt.setInt(1,Num.get(Num.size()-1)+1); //ë¹„ì–´ìˆëŠ” ê³³ or ë§ˆì§€ë§‰ ë‹¤ìŒ
 				pstmt.setString(2, newID);
 				pstmt.setString(3, newPW);
 				pstmt.setInt(4,0);				
@@ -196,15 +196,15 @@ public class Mainview {
 				
 				int count=pstmt.executeUpdate();
 				if(count==0) {
-					System.out.println("µ¥ÀÌÅÍ ÀÔ·Â ½ÇÆĞ");
+					System.out.println("ë°ì´í„° ì…ë ¥ ì‹¤íŒ¨");
 				}else {
-					System.out.println("µ¥ÀÌÅÍ ÀÔ·Â ¼º°ø");
+					System.out.println("ë°ì´í„° ì…ë ¥ ì„±ê³µ");
 				}
 			}
 			catch(ClassNotFoundException e) {
-				System.out.println("µå¶óÀÌ¹ö ·Îµù ½ÇÆĞ");
+				System.out.println("ë“œë¼ì´ë²„ ë¡œë”© ì‹¤íŒ¨");
 			}catch(SQLException e) {
-				System.out.println("¿¡·¯: "+e);
+				System.out.println("ì—ëŸ¬: "+e);
 			}
 
 			break;
@@ -212,20 +212,20 @@ public class Mainview {
 		
 	}
 	public static boolean Login() {
-		System.out.println("IDÀÔ·Â :");
+		System.out.println("IDì…ë ¥ :");
 		String newID=sc.next();
 		
-		System.out.println("PWÀÔ·Â :");
+		System.out.println("PWì…ë ¥ :");
 		String newPW=sc.next();
 		if(!(newID.equals("admin") && newPW.equals("admin"))) {
-			System.out.println("·Î±×ÀÎ½ÇÆĞ");
+			System.out.println("ë¡œê·¸ì¸ì‹¤íŒ¨");
 			System.exit(0);
 			return false;
 			}
 		else return true;
 	}
 	public static void CreateAdmin() {
-		System.out.println("»ç¿ø¹øÈ£ :");
+		System.out.println("ì‚¬ì›ë²ˆí˜¸ :");
 		int sno=sc.nextInt();
 		index=Num.indexOf(sno);
 		String newID=ID.get(index);
@@ -233,7 +233,7 @@ public class Mainview {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String url="jdbc:mysql://localhost/practice?characterEncoding=UTF-8&serverTimezone=UTC";
-			conn=DriverManager.getConnection(url,"root","purejang98");
+			conn=DriverManager.getConnection(url,"root","password");
 			
 			String sql="INSERT INTO logindb VALUES(?,?,?)";
 					
@@ -245,15 +245,15 @@ public class Mainview {
 			
 			int count=pstmt.executeUpdate();
 			if(count==0) {
-				System.out.println("µ¥ÀÌÅÍ ÀÔ·Â ½ÇÆĞ");
+				System.out.println("ë°ì´í„° ì…ë ¥ ì‹¤íŒ¨");
 			}else {
-				System.out.println("µ¥ÀÌÅÍ ÀÔ·Â ¼º°ø");
+				System.out.println("ë°ì´í„° ì…ë ¥ ì„±ê³µ");
 			}
 		}
 		catch(ClassNotFoundException e) {
-			System.out.println("µå¶óÀÌ¹ö ·Îµù ½ÇÆĞ");
+			System.out.println("ë“œë¼ì´ë²„ ë¡œë”© ì‹¤íŒ¨");
 		}catch(SQLException e) {
-			System.out.println("¿¡·¯: "+e);
+			System.out.println("ì—ëŸ¬: "+e);
 		}
 	}
 	
