@@ -21,24 +21,25 @@ public class FaceMain {
 	public static Scanner sc=new Scanner(System.in);
 	public static void main(String[] args) {
 		DbManager db=new DbManager();
-		System.out.println("1.·Î±×ÀÎ 2.È¸¿ø°¡ÀÔ");
+		System.out.println("1.ë¡œê·¸ì¸ 2.íšŒì›ê°€ì…");
 		int select=sc.nextInt();
 		int check1=1;
 		int check2=0;
-		if(select==1) { //·Î±×ÀÎ
-			while(check1==0)
-				System.out.println("¾ÆÀÌµğ ÀÔ·Â");
+		if(select==1) { //ë¡œê·¸ì¸
+			
+			while(check1==0) {
+				System.out.println("ì•„ì´ë”” ì…ë ¥");
 				id=sc.next();
-				System.out.println("ºñ¹Ğ¹øÈ£ ÀÔ·Â");
+				System.out.println("ë¹„ë°€ë²ˆí˜¸ ì…ë ¥");
 				pw=sc.next();
-				check1=db.LogIn(id,pw);
-		}else if(select==2) { //È¸¿ø°¡ÀÔ
+				check1=db.LogIn(id,pw);}
+		}else if(select==2) { //íšŒì›ê°€ì…
 			while(check2!=1) {
-				System.out.println("¾ÆÀÌµğ ÀÔ·Â");
+				System.out.println("ì•„ì´ë”” ì…ë ¥");
 				id=sc.next();
-				System.out.println("ºñ¹Ğ¹øÈ£ ÀÔ·Â");
+				System.out.println("ë¹„ë°€ë²ˆí˜¸ ì…ë ¥");
 				pw=sc.next();
-				System.out.println("»ç¿ø¹øÈ£ ÀÔ·Â");
+				System.out.println("ì‚¬ì›ë²ˆí˜¸ ì…ë ¥");
 				index=sc.nextInt();
 				check2=db.managerSignUp(id,pw,index);
 				
@@ -46,7 +47,7 @@ public class FaceMain {
 		}
 		while(true) {
 			
-		System.out.println("1.Ãâ±Ù 2.Åğ±Ù 3.°ü¸®");
+		System.out.println("1.ì¶œê·¼ 2.í‡´ê·¼ 3.ê´€ë¦¬");
 		select=sc.nextInt();
 		Controller cont =new Controller();
 		
@@ -63,11 +64,11 @@ public class FaceMain {
 		
 	
 	
-	public static void RunManage() { //°ü¸®ÀÚ ¸Ş´º
+	public static void RunManage() { //ê´€ë¦¬ì ë©”ë‰´
 		DbManager db=new DbManager();
-		System.out.println("1.»ç¿ø»èÁ¦ 2.»ç¿øÃß°¡");
+		System.out.println("1.ì‚¬ì›ì‚­ì œ 2.ì‚¬ì›ì¶”ê°€");
 		int select=sc.nextInt();
-		System.out.println("»ç¿ø¹øÈ£  ÀÔ·Â");
+		System.out.println("ì‚¬ì›ë²ˆí˜¸  ì…ë ¥");
 		int Employee_IDX=sc.nextInt();
 		int check3=0;
 		switch(select) {
@@ -75,11 +76,11 @@ public class FaceMain {
 			db.deleteEmployee(Employee_IDX);
 		case 2:
 			while(check3!=1) {
-			System.out.println("ÀÌ¸§  ÀÔ·Â");
+			System.out.println("ì´ë¦„  ì…ë ¥");
 			String Employee_NM=sc.next();
-			System.out.println("ºÎ¼­  ÀÔ·Â");
+			System.out.println("ë¶€ì„œ  ì…ë ¥");
 			String Employee_DP=sc.next();
-			String Employee_CP=null; //ÄÄÇ»ÅÍ°æ·Î
+			String Employee_CP=null; //ì»´í“¨í„°ê²½ë¡œ
 			check3=db.employeeSignUp(Employee_IDX,Employee_NM, Employee_DP,Employee_CP);
 		
 			}
