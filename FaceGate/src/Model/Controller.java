@@ -18,12 +18,11 @@ public class Controller{
    //execCNN에서 해당 사원 index return
    int em_index;
    static String buff = new String();
-   
-   public Controller() {}
 
    //얼굴인식+WOL 실행
    public void getImage(int num) {
 
+	   	 wol = new WakeOnLan();
          String [] command = new String[2];
          String index = new String();
          int len;
@@ -45,7 +44,8 @@ public class Controller{
           index = index.substring(0,1);
           //System.out.println(index);
           em_index = Integer.parseInt(index);
-          //System.out.println(em_index);
+          
+          System.out.println("em_index : "+em_index);
 
           //사원 인덱스 기준으로 DB에 출근 시간 기록
           DbManager db=new DbManager();
@@ -80,8 +80,8 @@ public class Controller{
          
          
          
-         System.out.println("result:" + result);
-         System.out.println("output:" + outputStream.toString());
+         //System.out.println("result:" + result);
+         //System.out.println("output:" + outputStream.toString());
          buff = outputStream.toString();
          
       }
