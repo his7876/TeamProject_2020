@@ -9,21 +9,21 @@ public class Controller {
    public static Scanner sc=new Scanner(System.in);
    
    //로그인
-   public static void LogIn(String id,String pw) {
+   public static int LogIn(String id,String pw) {
       check=0;
       DbManager db=new DbManager();
-      while(check==0) {
-         check=db.LogIn(id,pw);
-         }
+      //while(check==0) {
+      return db.LogIn(id,pw);
+      //}
    }
    
    //회원가입
-   public static void SignUp(String id,String pw,int index) {
+   public static int SignUp(String id,String pw,int index) {
       check=0;
       DbManager db=new DbManager();
-      while(check!=1) {
-         check=db.managerSignUp(id,pw,index);
-      }
+//      while(check!=1) {
+      return db.managerSignUp(id,pw,index);
+//      }
    }
    
    //사원삭제

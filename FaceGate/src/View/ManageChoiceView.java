@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import Model.FaceRecognization;
+
 public class ManageChoiceView extends JFrame implements ActionListener {
 	
 	Image _ku_logoImg, homeImg= null;
@@ -24,7 +26,9 @@ public class ManageChoiceView extends JFrame implements ActionListener {
 	JButton btn2 = new JButton("½Å±Ô»ç¿ø Ãß°¡");
 	JButton home = new JButton();
 	JLabel ManagerInfo = new JLabel("±è¼ö¹Î");
-
+	
+	FaceRecognization FR;
+	
 	public ManageChoiceView() {
 		super("FACEGATE"); // title
 		this.setSize(800, 650);
@@ -33,6 +37,7 @@ public class ManageChoiceView extends JFrame implements ActionListener {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		init();
 		this.setVisible(true);
+		FR = new FaceRecognization();
 	}
 	
 	public void init() {
@@ -101,7 +106,7 @@ public class ManageChoiceView extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		if(e.getSource() == home) {
 			this.setVisible(false);
-	        new FaceRecognitionView().setVisible(true);
+	        new FaceRecognitionView(FR).setVisible(true);
 		}else if(e.getSource() == btn1) {
 			this.setVisible(false);
 	        new ExistWorkerView().setVisible(true);

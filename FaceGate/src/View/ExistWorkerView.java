@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import Model.FaceRecognization;
 public class ExistWorkerView extends JFrame  implements ActionListener{
 	Image _ku_logoImg, homeImg, prevImg = null;
 	ImageIcon homeIcon, prevIcon;
@@ -21,6 +22,7 @@ public class ExistWorkerView extends JFrame  implements ActionListener{
 	JButton home = new JButton();
 	JButton prev = new JButton();
 	JLabel ManagerInfo = new JLabel("±è¼ö¹Î");
+	FaceRecognization FR;
 	
 	public ExistWorkerView() {
 		super("FACEGATE"); // title
@@ -30,6 +32,7 @@ public class ExistWorkerView extends JFrame  implements ActionListener{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		init();
 		this.setVisible(true);
+		FR = new FaceRecognization();
 	}
 	
 	public void init() {
@@ -96,7 +99,7 @@ public class ExistWorkerView extends JFrame  implements ActionListener{
 		// TODO Auto-generated method stub
 		if(e.getSource() == home) {
 			this.setVisible(false);
-	        new FaceRecognitionView().setVisible(true);
+	        new FaceRecognitionView(FR).setVisible(true);
 		}else if(e.getSource() == prev) {
 			this.setVisible(false);
 	        new ManageChoiceView().setVisible(true);
