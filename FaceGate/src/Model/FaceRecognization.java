@@ -38,20 +38,20 @@ public class FaceRecognization extends Thread{
          command[1] = "C:\\Users\\Hong\\Documents\\FACEGATE\\FaceGate\\webcam+recog.py";
          
          //CNN model 실행
-         //try {
-         //     execCNN(command);
-         // } catch (Exception e) {
-         //     e.printStackTrace();
-         //}
+         try {
+              execCNN(command);
+          } catch (Exception e) {
+              e.printStackTrace();
+         }
          
          
-          //len = buff.length();
-          //index =  buff.substring(len-3);
-          //index = index.substring(0,1);
-          //System.out.println(index);
-          //em_index = Integer.parseInt(index);
+          len = buff.length();
+          index =  buff.substring(len-3);
+          index = index.substring(0,1);
+          System.out.println(index);
+          em_index = Integer.parseInt(index);
           
-          //System.out.println("em_index : "+em_index);
+          System.out.println("em_index : "+em_index);
 
           //사원 인덱스 기준으로 DB에 출근 시간 기록
           
@@ -65,7 +65,7 @@ public class FaceRecognization extends Thread{
         	  db.Commute_Off(em_index);
           }
           //WOL 실행
-          wol.power_on(em_index);
+          //wol.power_on(em_index);
    }
 
    //CNN 모델 실행
@@ -83,7 +83,7 @@ public class FaceRecognization extends Thread{
          
          executor.setStreamHandler(pumpStreamHandler);
          
-         executor.setExitValue(1);
+        // executor.setExitValue(1);
          int result = executor.execute(commandLine);
          //executor.setExitValue(1);
          
