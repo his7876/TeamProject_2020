@@ -11,38 +11,36 @@ import java.sql.Statement;
 public class WakeOnLan {
    public static final int PORT = 9;
    //db 이름이 employee인것 연결 num(소프트맥스 번호??) 과 컴퓨터 주소를 저장한 db
-   private static final String DR_URL = "jdbc:mysql://localhost:3306/employee?serverTimezone=Asia/Seoul&useSSL=false";
+  // private static final String DR_URL = "jdbc:mysql://localhost:3306/employee?serverTimezone=Asia/Seoul&useSSL=false";
    //user id
-   private static final String USRE_NAME ="root";
+  // private static final String USRE_NAME ="root";
    //user pw
-   private static final  String PASSWORD = "DbScKs!3@4";
+  // private static final  String PASSWORD = "DbScKs!3@4";
    
    
    public void power_on(int num) {
       
       
-      String JDBD_DRIVER = "com.mysql.jdbc.Driver";
-      Statement state =null;
-      Connection conn=null;
-      String adress =null;
-      try {
-         Class.forName(JDBD_DRIVER);
-         //db 연결
-         conn = DriverManager.getConnection(DR_URL, USRE_NAME, PASSWORD);
-         state = conn.createStatement();
-         String a = Integer.toString(num);
-         
-         // softmax인거 같아서 employee 중 num과 같은 사원의 주소를 뽑는 sql
-         String sql = "SELECT  FROM adress where num = " + a;
-         ResultSet rs = state.executeQuery(sql);
-         while(rs.next()) {
-            //주소를 받는다
-            adress = rs.getString("adress");
-         }
-         rs.close();
+	   // String JDBD_DRIVER = "com.mysql.jdbc.Driver";
+	   Statement state =null;
+	   Connection conn=null;
+	   String address2 =null;
+	   try {
+	      Class.forName("org.sqlite.JDBC");
+	      //db 연결
+	      conn = DriverManager.getConnection("jdbc:sqlite:FaceGate.db");
+	      state = conn.createStatement();
+	      String a = Integer.toString(num);
+	         
+	      // softmax인거 같아서 employee 중 num과 같은 사원의 주소를 뽑는 sql
+	      String sql = "SELECT Employee_CP FROM EMPLOYEE where num = " + a;
+	      ResultSet rs = state.executeQuery(sql);
+
+	      address2 = rs.getString("Employee_CP");
+	      rs.close();
             
          
-         String macStr = adress; /*"e4-b3-18-ba-15-da"*/;
+         String macStr = address2; /*"e4-b3-18-ba-15-da"*/;
          String ipStr = "255.255.255.255";
 
          try {
