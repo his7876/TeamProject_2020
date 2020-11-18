@@ -1,92 +1,44 @@
 package Model;
+import java.sql.*;
+import java.util.*;
 
 
-import org.apache.commons.exec.CommandLine;
-import org.apache.commons.exec.DefaultExecutor;
-import org.apache.commons.exec.PumpStreamHandler;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-
-//import java.sql.*;
-//import java.util.*;
-
-
-public class Controller{
-   WakeOnLan wol;
-
-   //execCNN에서 해당 사원 index return
-   int em_index;
-   static String buff = new String();
-
-   //얼굴인식+WOL 실행
-   public void getImage(int num) {
-
-	   	 wol = new WakeOnLan();
-         String [] command = new String[2];
-         String index = new String();
-         int len;
-         //int i_index; //사원 인덱스
-         
-         command[0] = "python";
-         command[1] = "C:\\Users\\Hong\\Desktop\\대학교\\학교\\2020 2학기\\산협프\\Face_Recognition\\webcam+recog.py";
-         
-         //CNN model 실행
-         try {
-              execCNN(command);
-          } catch (Exception e) {
-              e.printStackTrace();
-          }
-         
-         
-         len = buff.length();
-          index =  buff.substring(len-3);
-          index = index.substring(0,1);
-          //System.out.println(index);
-          em_index = Integer.parseInt(index);
-          
-          System.out.println("em_index : "+em_index);
-
-          //사원 인덱스 기준으로 DB에 출근 시간 기록
-          DbManager db=new DbManager();
-          if(num==1) {
-        	  db.Commute_On(em_index);
-          }
-          else if(num==2) {
-        	  db.Commute_Off(em_index);
-          }
-          //WOL 실행
-          wol.power_on(em_index);
-   }
-
-   //CNN 모델 실행
-   public static void execCNN(String[] command) throws IOException, InterruptedException{
-        CommandLine commandLine = CommandLine.parse(command[0]);
-         for (int i = 1, n = command.length; i<n; i++) {
-            commandLine.addArgument(command[i]);
-         
+public class Controller {
+   public static int check;
+   public static int select;
+   public static Scanner sc=new Scanner(System.in);
+   
+   //로그인
+   public static void LogIn(String id,String pw) {
+      check=0;
+      DbManager db=new DbManager();
+      while(check==0) {
+         check=db.LogIn(id,pw);
          }
-         
-         
-         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-         PumpStreamHandler pumpStreamHandler = new PumpStreamHandler(outputStream);
-         DefaultExecutor executor = new DefaultExecutor();
-         
-         executor.setStreamHandler(pumpStreamHandler);
-         
-         //executor.setExitValue(1);
-         int result = executor.execute(commandLine);
-         //executor.setExitValue(1);
-         
-         
-         
-         //System.out.println("result:" + result);
-         //System.out.println("output:" + outputStream.toString());
-         buff = outputStream.toString();
-         
+   }
+   
+   //회원가입
+   public static void SignUp(String id,String pw,int index) {
+      check=0;
+      DbManager db=new DbManager();
+      while(check!=1) {
+         check=db.managerSignUp(id,pw,index);
       }
-
+   }
    
+   //사원삭제
+   public static void Delete(int Employee_IDX) {
+      DbManager db=new DbManager();
+      db.deleteEmployee(Employee_IDX);
+   }
    
-
+   //사원추가
+   public static void AddEmployee(int Employee_IDX, String Employee_NM, String Employee_DP, String Employee_CP) {
+      check=0;
+      while(check!=1) {
+         DbManager db=new DbManager();
+         check=db.employeeSignUp(Employee_IDX,Employee_NM, Employee_DP,Employee_CP);
+         }
+   }
+   
 }
