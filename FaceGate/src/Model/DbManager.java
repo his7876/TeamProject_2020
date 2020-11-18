@@ -41,14 +41,14 @@ public class DbManager {
 //         System.err.println(e.getMessage());
 //      }
 
-      //함수 실행 예시입니다. 
-      Commute_On(201811259);
-      Commute_Off(201811259);
-      managerSignUp("baesubin18", "qotnqls", 201811259);
-      employeeSignUp(201811259, "배수빈", "DB/디자인팀", null);
-      LogIn("baesubin18", "qotnqls");
-      deleteEmployee(201811259);
-      getEmployeeData("배수빈");
+      // 함수 실행 예시입니다.
+//      Commute_On(201811259);
+//      Commute_Off(201811259);
+//      managerSignUp("baesubin18", "qotnqls", 201811259);
+//      employeeSignUp(201811259, "배수빈", "DB/디자인팀", null);
+//      LogIn("baesubin18", "qotnqls");
+//      deleteEmployee(201811259);
+//      getEmployeeData("배수빈");
    }
 
    public int Commute_On(int Employee_IDX) {
@@ -60,7 +60,7 @@ public class DbManager {
          // 해당 Employee_IDX에 대해 현재시간 insert
          cnt = DriverManager.getConnection("jdbc:sqlite:FaceGate.db");
          stat = cnt.createStatement();
-         
+
          ResultSet rs = stat.executeQuery(
                "select EXISTS (select * from EMPLOYEE where Employee_IDX = " + Employee_IDX + ") as success");
          int flag = rs.getInt(1);
@@ -101,7 +101,7 @@ public class DbManager {
          // Commute_Off컬럼에 현재시간 update
          cnt = DriverManager.getConnection("jdbc:sqlite:FaceGate.db");
          stat = cnt.createStatement();
-         
+
          String query = "update Commute set Commute_OFF_TM = datetime('now', 'localtime') "
                + "where Commute_OFF_TM is NULL And COMMUTE.Employee_IDX =" + Employee_IDX;
          if (stat.executeUpdate(query) >= 1) {
@@ -133,7 +133,7 @@ public class DbManager {
       try {
          cnt = DriverManager.getConnection("jdbc:sqlite:FaceGate.db");
          stat = cnt.createStatement();
-         
+
          rs = stat.executeQuery(
                "select EXISTS (select * from EMPLOYEE where Employee_IDX = " + Employee_IDX + " ) as success");
 
@@ -160,7 +160,7 @@ public class DbManager {
                   cnt.close();
                   stat.close();
                   return 0;
-               }                  
+               }
             }
          } else {// 사원X
             rs.close();
@@ -202,7 +202,7 @@ public class DbManager {
                cnt.close();
                stat.close();
                return 0;
-            }         
+            }
 
          } else {// 사원O
             System.out.println("이미 사원으로 등록되어 있음");
@@ -215,7 +215,7 @@ public class DbManager {
       SQLException e) {
          e.printStackTrace();
       }
-      
+
       return 0;
    }
 
@@ -226,9 +226,9 @@ public class DbManager {
       try {
          cnt = DriverManager.getConnection("jdbc:sqlite:FaceGate.db");
          stat = cnt.createStatement();
-         
-         ResultSet rs = stat.executeQuery("select * from MANAGER where Manager_ID = '" + Manager_ID + "' and Manager_Pwd = '"
-               + Manager_Pwd + "'");
+
+         ResultSet rs = stat.executeQuery("select * from MANAGER where Manager_ID = '" + Manager_ID
+               + "' and Manager_Pwd = '" + Manager_Pwd + "'");
          if (rs.next()) {
             employee_IDX = rs.getInt("Employee_IDX");
             System.out.println("로그인성공 / 사원번호 : " + employee_IDX);
@@ -255,7 +255,7 @@ public class DbManager {
       try {
          cnt = DriverManager.getConnection("jdbc:sqlite:FaceGate.db");
          stat = cnt.createStatement();
-         
+
          ResultSet rs = stat.executeQuery(
                "select EXISTS (select * from EMPLOYEE where Employee_IDX = " + Employee_IDX + " ) as success");
          int flag = rs.getInt(1);
@@ -298,7 +298,7 @@ public class DbManager {
 
          cnt = DriverManager.getConnection("jdbc:sqlite:FaceGate.db");
          stat = cnt.createStatement();
-         
+
          ResultSet rs = stat.executeQuery(
                "select EXISTS (select * from EMPLOYEE where Employee_NM = '" + Employee_NM + "' ) as success");
          int flag = rs.getInt(1);

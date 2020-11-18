@@ -18,7 +18,7 @@ public class Controller {
    }
    
    //회원가입
-   public static int SignUp(String id,String pw,int index) {
+   public static int ManagerSignUp(String id,String pw,int index) {
       check=0;
       DbManager db=new DbManager();
 //      while(check!=1) {

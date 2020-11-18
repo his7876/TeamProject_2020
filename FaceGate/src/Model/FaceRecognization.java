@@ -36,7 +36,7 @@ public class FaceRecognization extends Thread{
          
          command[0] = "python";
          command[1] = "C:\\Users\\Hong\\Documents\\FACEGATE\\FaceGate\\webcam+recog.py";
-         
+         	
          //CNN model ½ÇÇà
          try {
               execCNN(command);
@@ -83,7 +83,7 @@ public class FaceRecognization extends Thread{
          
          executor.setStreamHandler(pumpStreamHandler);
          
-        // executor.setExitValue(1);
+         //executor.setExitValue(1);
          int result = executor.execute(commandLine);
          //executor.setExitValue(1);
          
