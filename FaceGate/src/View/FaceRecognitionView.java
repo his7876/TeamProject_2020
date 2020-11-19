@@ -17,70 +17,70 @@ import Model.*;
 
 public class FaceRecognitionView extends JFrame implements ActionListener {
 
-	Image _ku_logoImg = null;
-	JButton manage = new JButton("MANAGER PAGE");
-	FaceRecognization FR;
-	
-	public FaceRecognitionView(FaceRecognization FR) {
-		super("FACEGATE"); // title
-		this.setSize(800, 650);
-		this.getContentPane().setBackground(Color.WHITE);
-		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setVisible(true);
-		this.FR = FR;
-		init();
-	}
-	
-	
-	public void init() {
-		// TODO Auto-generated method stub
-		this.setForeground(Color.WHITE);
-		try {
-			_ku_logoImg = ImageIO.read(new File("Img/KU_Logo.png"));
-		} catch (IOException e) {
-			JOptionPane.showMessageDialog(null, "Fail to load image.");
-			System.exit(0);
-		}
+   Image _ku_logoImg = null;
+   JButton manage = new JButton("MANAGER PAGE");
+   FaceRecognization FR;
+   
+   public FaceRecognitionView(FaceRecognization FR) {
+      super("FACEGATE"); // title
+      this.setSize(800, 650);
+      this.getContentPane().setBackground(Color.WHITE);
+      this.setLocationRelativeTo(null);
+      this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+      this.setVisible(true);
+      this.FR = FR;
+      init();
+   }
+   
+   
+   public void init() {
+      // TODO Auto-generated method stub
+      this.setForeground(Color.WHITE);
+      try {
+         _ku_logoImg = ImageIO.read(new File("Img/KU_Logo.png"));
+      } catch (IOException e) {
+         JOptionPane.showMessageDialog(null, "Fail to load image.");
+         System.exit(0);
+      }
 
-		this.setIconImage(_ku_logoImg);
-		this.setLayout(null);
-		/*
-		 * show web-cam image
-		 * 
-		 * manager logout button?
-		 */
-		
-		this.add(manage);
-		manage.setForeground(Color.white);
-		manage.setOpaque(true);
-		manage.setBackground(new Color(0xFFC000));
-		manage.setBorderPainted(false);
-		manage.setFocusPainted(false);
-		manage.setBounds(550, 500, 180, 50);
-		
+      this.setIconImage(_ku_logoImg);
+      this.setLayout(null);
+      /*
+       * show web-cam image
+       * 
+       * manager logout button?
+       */
+      
+      this.add(manage);
+      manage.setForeground(Color.white);
+      manage.setOpaque(true);
+      manage.setBackground(new Color(0xFFC000));
+      manage.setBorderPainted(false);
+      manage.setFocusPainted(false);
+      manage.setBounds(550, 500, 180, 50);
+      
 
-		
-		initListener();
-		
-		FR.run();
-		
-	}
-	
-	public void initListener() {
-		// TODO Auto-generated method stub
-		manage.addActionListener(this);
-	}
+      
+      initListener();
+      
+      FR.run();
+      
+   }
+   
+   public void initListener() {
+      // TODO Auto-generated method stub
+      manage.addActionListener(this);
+   }
 
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		if(e.getSource() == manage) {
-			FR.setStop(true);
-			this.setVisible(false);
-	        new ManageChoiceView().setVisible(true);
-		}
-	}
+   @Override
+   public void actionPerformed(ActionEvent e) {
+      // TODO Auto-generated method stub
+      if(e.getSource() == manage) {
+         FR.setStop(true);
+         this.setVisible(false);
+           new ManageChoiceView().setVisible(true);
+      }
+   }
 
 }
