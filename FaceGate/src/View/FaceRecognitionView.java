@@ -59,11 +59,9 @@ public class FaceRecognitionView extends JFrame implements ActionListener {
       manage.setFocusPainted(false);
       manage.setBounds(550, 500, 180, 50);
       
-
-      
       initListener();
       
-      FR.run();
+      FR.start();
       
    }
    

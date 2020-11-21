@@ -20,6 +20,7 @@ public class FaceRecognization extends Thread{
    static String buff = new String();
 
    public void run() {
+	   System.out.println("FaceRecognization run");
 	   while(!stop) {
 		   getImage(1);
 	   }
@@ -65,7 +66,7 @@ public class FaceRecognization extends Thread{
         	  db.Commute_Off(em_index);
           }
           //WOL 실행
-          //wol.power_on(em_index);
+          wol.power_on(em_index);
    }
 
    //CNN 모델 실행

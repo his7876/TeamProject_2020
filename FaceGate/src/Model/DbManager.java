@@ -80,7 +80,7 @@ public class DbManager {
                return 0;
             }
          } else {// 사원X
-            //System.out.println("사원이 아닙니다. ");
+            System.out.println("출근 - 사원이 아닙니다. ");
             rs.close();
             cnt.close();
             stat.close();
@@ -166,7 +166,7 @@ public class DbManager {
             rs.close();
             cnt.close();
             stat.close();
-            //System.out.println("사원이 아닙니다. ");
+            System.out.println("관리자 - 사원이 아닙니다. ");
             return 2;
          }
 
