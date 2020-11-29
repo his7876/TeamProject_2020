@@ -124,6 +124,7 @@ public class SignUpView extends JFrame implements ActionListener {
          new MainView().setVisible(true);
       } else if (e.getSource() == SubmitBtn) {
          // renew administrator DB
+    	 
          String id = IdText.getText();
          String pwd = PwdText.getText();
          String checkPwd = CheckPwdText.getText();
@@ -134,26 +135,25 @@ public class SignUpView extends JFrame implements ActionListener {
             temp = Controller.ManagerSignUp(id, pwd, Integer.parseInt(employeeNum));
 
             switch (temp) {
-            case 0: // ÀÔ·Â ½ÇÆĞ
-               JOptionPane.showMessageDialog(null, "°ü¸®ÀÚ µî·Ï¿¡ ½ÇÆĞÇß½À´Ï´Ù. ");
+            case 0: // ì…ë ¥ ì‹¤íŒ¨
+               JOptionPane.showMessageDialog(null, "ê´€ë¦¬ì ë“±ë¡ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤. ");
                break;
-            case 1: // ÀÔ·Â ¼º°ø
-               JOptionPane.showMessageDialog(null, "°ü¸®ÀÚ µî·Ï¿¡ ¼º°øÇß½À´Ï´Ù. ");
+            case 1: // ì…ë ¥ ì„±ê³µ
+               JOptionPane.showMessageDialog(null, "ê´€ë¦¬ì ë“±ë¡ì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤. ");
                break;
-            case 2: // »ç¿ø ¾Æ´Ô -> ÀÔ·Â X
-               JOptionPane.showMessageDialog(null, "»ç¿øÀÌ ¾Æ´Ï¹Ç·Î °ü¸®ÀÚ µî·ÏÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù. ");
+            case 2: // ì‚¬ì› ì•„ë‹˜ -> ì…ë ¥ X
+               JOptionPane.showMessageDialog(null, "ì‚¬ì›ì´ ì•„ë‹ˆë¯€ë¡œ ê´€ë¦¬ì ë“±ë¡ì´ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤. ");
                break;
-            case 3: // ÀÌ¹Ì °ü¸®ÀÚ -> ÀÔ·ÂX
-               JOptionPane.showMessageDialog(null, "ÀÌ¹Ì °ü¸®ÀÚ·Î µî·ÏµÇ¾îÀÖ´Â »ç¿øÀÔ´Ï´Ù. ");
+            case 3: // ì´ë¯¸ ê´€ë¦¬ì -> ì…ë ¥X
+               JOptionPane.showMessageDialog(null, "ì´ë¯¸ ê´€ë¦¬ìë¡œ ë“±ë¡ë˜ì–´ìˆëŠ” ì‚¬ì›ì…ë‹ˆë‹¤. ");
                break;
             }
             this.setVisible(false);
             new MainView().setVisible(true);
          } else {
-            JOptionPane.showMessageDialog(null, "ÀÔ·ÂÇÏ½Å ºñ¹Ğ¹øÈ£°¡ ´Ù¸¨´Ï´Ù.");
+            JOptionPane.showMessageDialog(null, "ì…ë ¥í•˜ì‹  ë¹„ë°€ë²ˆí˜¸ê°€ ë‹¤ë¦…ë‹ˆë‹¤.");
          }
 
       }
    }
-
 }

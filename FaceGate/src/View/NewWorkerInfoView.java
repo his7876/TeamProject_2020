@@ -1,5 +1,6 @@
 package View;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -29,7 +30,7 @@ public class NewWorkerInfoView extends JFrame  implements ActionListener {
    
    JButton home = new JButton();
    JButton prev = new JButton();
-   JLabel ManagerInfo = new JLabel("김수민");
+   JPanel ManagerInfo = new JPanel();
    JButton btn1 = new JButton("신규사원 사진 등록");
    
    JTextField IdxText = new JTextField(20);   //사원번호
@@ -62,6 +63,9 @@ public class NewWorkerInfoView extends JFrame  implements ActionListener {
       this.setIconImage(_ku_logoImg);
       this.setLayout(null);
       
+      JLabel pn1 = new JLabel("201811259");
+      JLabel pn2 = new JLabel("배수빈(관리자)");
+      JLabel pn3 = new JLabel("DB/디자인팀");
       
       homeImg = homeImg.getScaledInstance(40   , 40, Image.SCALE_DEFAULT);
       homeIcon = new ImageIcon(homeImg);
@@ -84,6 +88,12 @@ public class NewWorkerInfoView extends JFrame  implements ActionListener {
       
       ManagerInfo.setOpaque(true);
       ManagerInfo.setBackground(new Color(0xE7E6E6));
+      
+      
+      ManagerInfo.setLayout(new BorderLayout());
+      ManagerInfo.add(pn1, BorderLayout.NORTH);
+      ManagerInfo.add(pn2, BorderLayout.CENTER);
+      ManagerInfo.add(pn3, BorderLayout.SOUTH);
       
       
       btn1.setForeground(Color.white);
@@ -118,7 +128,7 @@ public class NewWorkerInfoView extends JFrame  implements ActionListener {
       this.add(btn1);
       
       home.setBounds(5, 5, 50, 40);
-      ManagerInfo.setBounds(5,550 , 100, 20);
+      ManagerInfo.setBounds(5,500 , 120, 60);
       prev.setBounds(60, 5, 40, 40);
       btn1.setBounds(300, 500 , 200, 50);
       
@@ -158,15 +168,16 @@ public class NewWorkerInfoView extends JFrame  implements ActionListener {
             JOptionPane.showMessageDialog(null, "사원 등록에 실패했습니다. ");
             break;
          case 1: // 입력 성공
-            JOptionPane.showMessageDialog(null,  name + "님, 사원 등록에 성공했습니다. ");
+            
+           this.setVisible(false);
+            new NewWorkerView().setVisible(true);
             break;
          case 2: // 이미 사원으로 등록됨 -> 입력 X
             JOptionPane.showMessageDialog(null, "이미 사원으로 등록되어있는 사원입니다. ");
             break;
          }
          
-         this.setVisible(false);
-         new NewWorkerView().setVisible(true);
+       
          //사원 DB로 정보가 넘어가야 함
       }
    }

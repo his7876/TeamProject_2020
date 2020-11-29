@@ -33,7 +33,7 @@ public class WakeOnLan {
 	      String a = Integer.toString(num);
 	         
 	      // softmax인거 같아서 employee 중 num과 같은 사원의 주소를 뽑는 sql
-	      String sql = "SELECT Employee_CP FROM EMPLOYEE where num = " + a;
+	         String sql = "SELECT Employee_CP FROM EMPLOYEE where Employee_IDX = " + a;
 	      ResultSet rs = state.executeQuery(sql);
 
 	      address2 = rs.getString("Employee_CP");

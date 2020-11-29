@@ -60,8 +60,13 @@ public class FaceRecognitionView extends JFrame implements ActionListener {
       manage.setBounds(550, 500, 180, 50);
       
       initListener();
+      try {
+         FR.start();
+         //JOptionPane.showMessageDialog(null, "얼굴인식에 성공하였습니다.");
+      }catch(Exception e) {
+        e.getStackTrace();
+      }
       
-      FR.start();
       
    }
    

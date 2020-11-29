@@ -287,41 +287,50 @@ public class DbManager {
    }
 
    public ArrayList<String> getEmployeeData(String Employee_NM) {
-      // return null : 사원이 아님
-      // ArrayList[0] : Employee_IDX를 String으로 변환한것
-      // ArrayList[1] : Employee_NM
-      // ArrayList[2] : Employee_DP
+	      // return null : 사원이 아님
+	      // ArrayList[0] : Employee_IDX를 String으로 변환한것
+	      // ArrayList[1] : Employee_NM
+	      // ArrayList[2] : Employee_DP
+	      // ArrayList[3] : 가장 최근 commute_on시간 
 
-      ArrayList returnArray = new ArrayList<String>();
+	      ArrayList returnArray = new ArrayList<String>();
 
-      try {
+	      try {
 
-         cnt = DriverManager.getConnection("jdbc:sqlite:FaceGate.db");
-         stat = cnt.createStatement();
+	         cnt = DriverManager.getConnection("jdbc:sqlite:FaceGate.db");
+	         stat = cnt.createStatement();
 
-         ResultSet rs = stat.executeQuery(
-               "select EXISTS (select * from EMPLOYEE where Employee_NM = '" + Employee_NM + "' ) as success");
-         int flag = rs.getInt(1);
-         rs.close();
-         if (flag == 0) {// 사원X
-            System.out.println("사원이 아님 ");
-            cnt.close();
-            stat.close();
-            return null;
-         } else { // 사원O
-            ResultSet rs2 = stat.executeQuery("select * from Employee where Employee_NM = '" + Employee_NM + "'");
-            returnArray.add(Integer.toString(rs2.getInt("Employee_IDX")));
-            returnArray.add(rs2.getString("Employee_NM"));
-            returnArray.add(rs2.getString("Employee_DP"));
-            rs2.close();
-            cnt.close();
-            stat.close();
-         }
-      } catch (SQLException e) {
-         e.printStackTrace();
-      }
-      System.out.println(returnArray.get(0) + " " + returnArray.get(1) + " " + returnArray.get(2));
-      return returnArray;
-   }
+	         ResultSet rs = stat.executeQuery(
+	               "select EXISTS (select * from EMPLOYEE where Employee_NM = '" + Employee_NM + "' ) as success");
+	         int flag = rs.getInt(1);
+	         rs.close();
+	         if (flag == 0) {// 사원X
+	            System.out.println("사원이 아님 ");
+	            cnt.close();
+	            stat.close();
+	            return null;
+	         } else { // 사원O
+	            ResultSet rs2 = stat.executeQuery("select * from Employee where Employee_NM = '" + Employee_NM + "'");
+	            int idx = rs2.getInt("Employee_IDX");
+	            returnArray.add(Integer.toString(idx));
+	            returnArray.add(rs2.getString("Employee_NM"));
+	            returnArray.add(rs2.getString("Employee_DP"));
+	            
+	            ResultSet rs3 = stat.executeQuery("select * from COMMUTE where Employee_IDX = " + idx  
+	                  + " and Commute_IDX = (SELECT max(Commute_IDX) FROM COMMUTE)");
+	            returnArray.add(rs3.getString("Commute_ON_TM"));
+	                  
+	            rs2.close();
+	            rs3.close();
+	            cnt.close();
+	            stat.close();
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      }
+	      System.out.println(returnArray.get(0) + " " + returnArray.get(1) + " " + returnArray.get(2) + " " + returnArray.get(3) );
+	      return returnArray;
+	   }
+   
 
 }

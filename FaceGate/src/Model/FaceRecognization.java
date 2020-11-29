@@ -56,7 +56,7 @@ public class FaceRecognization extends Thread{
 
           //사원 인덱스 기준으로 DB에 출근 시간 기록
           
-          em_index = 1;
+          //em_index = 1;
           
           DbManager db=new DbManager();
           if(num==1) {
