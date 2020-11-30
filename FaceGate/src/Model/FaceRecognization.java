@@ -8,6 +8,8 @@ import org.apache.commons.exec.PumpStreamHandler;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 //import java.sql.*;
 //import java.util.*;
 
@@ -61,6 +63,7 @@ public class FaceRecognization extends Thread{
           DbManager db=new DbManager();
           if(num==1) {
         	  db.Commute_On(em_index);
+        	  JOptionPane.showMessageDialog(null, "얼굴인식에 성공하였습니다.");
           }
           else if(num==2) {
         	  db.Commute_Off(em_index);
