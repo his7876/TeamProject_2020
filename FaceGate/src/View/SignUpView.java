@@ -124,7 +124,7 @@ public class SignUpView extends JFrame implements ActionListener {
          new MainView().setVisible(true);
       } else if (e.getSource() == SubmitBtn) {
          // renew administrator DB
-    	 
+        
          String id = IdText.getText();
          String pwd = PwdText.getText();
          String checkPwd = CheckPwdText.getText();
@@ -135,23 +135,23 @@ public class SignUpView extends JFrame implements ActionListener {
             temp = Controller.ManagerSignUp(id, pwd, Integer.parseInt(employeeNum));
 
             switch (temp) {
-            case 0: // ìž…ë ¥ ì‹¤íŒ¨
-               JOptionPane.showMessageDialog(null, "ê´€ë¦¬ìž ë“±ë¡ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤. ");
+            case 0: // ÀÔ·Â ½ÇÆÐe
+               JOptionPane.showMessageDialog(null, "°ü¸®ÀÚ µî·Ï¿¡ ½ÇÆÐÇß½À´Ï´Ù. ");
                break;
-            case 1: // ìž…ë ¥ ì„±ê³µ
-               JOptionPane.showMessageDialog(null, "ê´€ë¦¬ìž ë“±ë¡ì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤. ");
+            case 1: // ÀÔ·Â ¼º°ø
+               JOptionPane.showMessageDialog(null, "°ü¸®ÀÚ µî·Ï¿¡ ¼º°øÇß½À´Ï´Ù. ");
                break;
-            case 2: // ì‚¬ì› ì•„ë‹˜ -> ìž…ë ¥ X
-               JOptionPane.showMessageDialog(null, "ì‚¬ì›ì´ ì•„ë‹ˆë¯€ë¡œ ê´€ë¦¬ìž ë“±ë¡ì´ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤. ");
+            case 2: // »ç¿ø ¾Æ´Ô -> ÀÔ·Â X
+               JOptionPane.showMessageDialog(null, "»ç¿øÀÌ ¾Æ´Ï¹Ç·Î °ü¸®ÀÚ µî·ÏÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù. ");
                break;
-            case 3: // ì´ë¯¸ ê´€ë¦¬ìž -> ìž…ë ¥X
-               JOptionPane.showMessageDialog(null, "ì´ë¯¸ ê´€ë¦¬ìžë¡œ ë“±ë¡ë˜ì–´ìžˆëŠ” ì‚¬ì›ìž…ë‹ˆë‹¤. ");
+            case 3: // ÀÌ¹Ì °ü¸®ÀÚ -> ÀÔ·ÂX
+               JOptionPane.showMessageDialog(null, "ÀÌ¹Ì °ü¸®ÀÚ·Î µî·ÏµÇ¾îÀÖ´Â »ç¿øÀÔ´Ï´Ù. ");
                break;
             }
             this.setVisible(false);
             new MainView().setVisible(true);
          } else {
-            JOptionPane.showMessageDialog(null, "ìž…ë ¥í•˜ì‹  ë¹„ë°€ë²ˆí˜¸ê°€ ë‹¤ë¦…ë‹ˆë‹¤.");
+            JOptionPane.showMessageDialog(null, "ÀÔ·ÂÇÏ½Å ºñ¹Ð¹øÈ£°¡ ´Ù¸¨´Ï´Ù.");
          }
 
       }
