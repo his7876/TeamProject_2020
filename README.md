@@ -3,7 +3,7 @@
 ## [프로젝트 목표]
 ###### _얼굴 인식 기반의 출근 체크 관리 및 원격 PC 전원 제어 프로그램 개발_ :bust_in_silhouette: :computer:
 
-
+#### 발표 자료 (https://drive.google.com/file/d/1PXzjpaJkrNrcumvBVJL5a2jFadjZjaJh/view?usp=sharing)
 
 
 ### 1. 제작 기간 & 참여 인원
